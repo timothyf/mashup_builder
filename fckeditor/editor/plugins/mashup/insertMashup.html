@@ -1,0 +1,62 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../../dialog/common/fck_dialog_common.js"></script>
+    <script type="text/javascript" src="../../../../js/afrous/afrous-config.js"></script>
+    <script type="text/javascript" src="../../../../js/afrous/afrous-core.js"></script>
+    <script type="text/javascript" src="../../../../js/afrous/afrous-package.js"></script>
+    <script type="text/javascript" src="../../../../js/afrous/renderers/google-maps.js"></script>
+    <script type="text/javascript" src="../../../../js/afrous/afrous-editor.js"></script>
+    <script type="text/javascript" src="../../../../js/afrous/afrous-editor-ss-ext.js"></script>
+    <script type="text/javascript" src="insertMashup.js" ></script>
+    <script type="text/javascript">
+
+var dialog	= window.parent ;
+var oEditor = dialog.InnerDialogLoaded() ;
+
+var oActiveEl = dialog.Selection.GetSelectedElement() ;
+
+
+function OnLoad()
+{
+    dialog.SetOkButton( true ) ;
+	window.parent.SetAutoSize( true ) ;
+}
+
+function Ok()
+{
+	oEditor.FCKUndo.SaveUndoStep() ;
+	var oActiveElB = CreateNamedElement( oEditor, oActiveEl, 'iframe', {id: 'mashup'+GetE('txtId').value} ) ;
+    var oActiveElC = CreateNamedElement( oEditor, oActiveEl, 'div', {id: 'myDiv'} ) ;
+
+    window.parent.parent.loadMashup(GetE('txtId').value, oActiveElB, oActiveElC);
+
+	return true ;
+}
+
+function Cancel()
+{
+    alert("cancel");
+}
+
+    </script>
+  </head>
+  <body onload="OnLoad()" scroll="no" style="OVERFLOW: hidden">
+    <div id="mainDiv" align="center">
+	  <table>
+        <tr>
+		  <td>
+		    Id<br />
+			<input style="width: 100%" type="text" id="txtId" />
+          </td>
+        </tr>
+      </table>
+	</div>
+  </body>
+</html>

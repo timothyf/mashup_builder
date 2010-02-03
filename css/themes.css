@@ -1,0 +1,343 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  font-size:13px;
+}
+
+.innerDiv h1 {
+	font-size: 190%;
+}
+
+.innerDiv h2 {
+	font-size: 150%;
+}
+
+.innerDiv h3 {
+	font-size: 125%;
+}
+
+.innerDiv h1,h2,h3 {
+	margin: 0.5em 0;
+}
+
+.innerDiv h1,h2,h3,h4,h5,h6,strong,dt {
+	font-weight: bold;
+}
+
+.internal{
+  padding: 5px;
+}
+
+/*****************/
+/*    Themes     */
+/*****************/
+
+/*Blue 1 Style*/
+.blue1  #innerDivHeader{
+	background: #4AC7ED url(../images/editor/blue1.png) repeat-x scroll 0 50%;
+}
+.blue1  #innerDivFoot{
+	background: #4AC7ED url(../images/editor/blue1_revert.png) repeat-x scroll 0 50%;
+}
+.blue1 h1, .blue1 h2, .blue1 h3, .blue1 h4{
+	color: #4AC7ED;
+}
+.blue1  #innerDivHeader h1, .blue1  #innerDivHeader h2, .blue1  #innerDivHeader h3, .blue1  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.blue1  #innerDivFoot h1, .blue1  #innerDivFoot h2, .blue1  #innerDivFoot h3, .blue1  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Blue 2 Style*/
+.blue2 #innerDivHeader{
+	background: #AFE0FF url(../images/editor/blue2.png) repeat-x scroll 0 50%;
+}
+.blue2  #innerDivFoot{
+	background: #AFE0FF url(../images/editor/blue2_revert.png) repeat-x scroll 0 50%;
+}
+.blue2 h1, .blue2 h2, .blue2 h3, .blue2 h4{
+	color: #AFE0FF;
+}
+.blue2  #innerDivHeader h1, .blue2  #innerDivHeader h2, .blue2  #innerDivHeader h3, .blue2  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.blue2  #innerDivFoot h1, .blue2  #innerDivFoot h2, .blue2  #innerDivFoot h3, .blue2  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Blue 3 Style*/
+.blue3 #innerDivHeader{
+	background: #64AEF8 url(../images/editor/blue3.png) repeat-x scroll 0 50%;
+}
+.blue3  #innerDivFoot{
+	background: #64AEF8 url(../images/editor/blue3_revert.png) repeat-x scroll 0 50%;
+}
+.blue3 h1, .blue3 h2, .blue3 h3, .blue3 h4{
+	color: #64AEF8;
+}
+.blue3  #innerDivHeader h1, .blue3  #innerDivHeader h2, .blue3  #innerDivHeader h3, .blue3  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.blue3  #innerDivFoot h1, .blue3  #innerDivFoot h2, .blue3  #innerDivFoot h3, .blue3  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Blue 4 Style*/
+.blue4 #innerDivHeader{
+	background: #93CEDE url(../images/editor/blue4.png) repeat-x scroll 0 50%;
+}
+.blue4  #innerDivFoot{
+	background: #93CEDE url(../images/editor/blue4_revert.png) repeat-x scroll 0 50%;
+}
+.blue4 h1, .blue4 h2, .blue4 h3, .blue4 h4{
+	color: #93CEDE;
+}
+.blue4  #innerDivHeader h1, .blue4  #innerDivHeader h2, .blue4  #innerDivHeader h3, .blue4  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.blue4  #innerDivFoot h1, .blue4  #innerDivFoot h2, .blue4  #innerDivFoot h3, .blue4  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Blue 5 Style*/
+.blue5 #innerDivHeader{
+	background: #539BC4 url(../images/editor/blue5.png) repeat-x scroll 0 50%;
+}
+.blue5  #innerDivFoot{
+	background: #539BC4 url(../images/editor/blue5_revert.png) repeat-x scroll 0 50%;
+}
+.blue5 h1, .blue5 h2, .blue5 h3, .blue5 h4{
+	color: #539BC4;
+}
+.blue5  #innerDivHeader h1, .blue5  #innerDivHeader h2, .blue5  #innerDivHeader h3, .blue5  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.blue5  #innerDivFoot h1, .blue5  #innerDivFoot h2, .blue5  #innerDivFoot h3, .blue5  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Blue Gray Style*/
+.blue_grey #innerDivHeader{
+	background: #A6C7DC url(../images/editor/blue_grey.png) repeat-x scroll 0 50%;
+}
+.blue_grey  #innerDivFoot{
+	background: #A6C7DC url(../images/editor/blue_grey_revert.png) repeat-x scroll 0 50%;
+}
+.blue_grey h1, .blue_grey h2, .blue_grey h3, .blue_grey h4{
+	color: #A6C7DC;
+}
+.blue_grey  #innerDivHeader h1, .blue_grey  #innerDivHeader h2, .blue_grey  #innerDivHeader h3, .blue_grey  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.blue_grey  #innerDivFoot h1, .blue_grey  #innerDivFoot h2, .blue_grey  #innerDivFoot h3, .blue_grey  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Green 1 Style*/
+.green1 #innerDivHeader{
+	background: #E8F7B9 url(../images/editor/green1.png) repeat-x scroll 0 50%;
+}
+.green1  #innerDivFoot{
+	background: #E8F7B9 url(../images/editor/green1_revert.png) repeat-x scroll 0 50%;
+}
+.green1 h1, .green1 h2, .green1 h3, .green1 h4{
+	color: #C9E861;
+}
+.green1  #innerDivHeader h1, .green1  #innerDivHeader h2, .green1  #innerDivHeader h3, .green1  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.green1  #innerDivFoot h1, .green1  #innerDivFoot h2, .green1  #innerDivFoot h3, .green1  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Green 2 Style*/
+.green2 #innerDivHeader{
+	background: #DEDF83 url(../images/editor/green2.png) repeat-x scroll 0 50%;
+}
+.green2  #innerDivFoot{
+	background: #DEDF83 url(../images/editor/green2_revert.png) repeat-x scroll 0 50%;
+}
+.green2 h1, .green2 h2, .green2 h3, .green2 h4{
+	color: #DEDF83;
+}
+.green2  #innerDivHeader h1, .green2  #innerDivHeader h2, .green2  #innerDivHeader h3, .green2  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.green2  #innerDivFoot h1, .green2  #innerDivFoot h2, .green2  #innerDivFoot h3, .green2  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Green 3 Style*/
+.green3 #innerDivHeader{
+	background: #A1D279 url(../images/editor/green3.png) repeat-x scroll 0 50%;
+}
+.green3  #innerDivFoot{
+	background: #A1D279 url(../images/editor/green3_revert.png) repeat-x scroll 0 50%;
+}
+.green3 h1, .green3 h2, .green3 h3, .green3 h4{
+	color: #A1D279;
+}
+.green3  #innerDivHeader h1, .green3  #innerDivHeader h2, .green3  #innerDivHeader h3, .green3  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.green3  #innerDivFoot h1, .green3  #innerDivFoot h2, .green3  #innerDivFoot h3, .green3  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Green 4 Style*/
+.green4 #innerDivHeader{
+	background: #B3D569 url(../images/editor/green4.png) repeat-x scroll 0 50%;
+}
+.green4  #innerDivFoot{
+	background: #B3D569 url(../images/editor/green4_revert.png) repeat-x scroll 0 50%;
+}
+.green4 h1, .green4 h2, .green4 h3, .green4 h4{
+	color: #B3D569;
+}
+.green4  #innerDivHeader h1, .green4  #innerDivHeader h2, .green4  #innerDivHeader h3, .green4  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.green4  #innerDivFoot h1, .green4  #innerDivFoot h2, .green4  #innerDivFoot h3, .green4  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Green 5 Style*/
+.green5 #innerDivHeader{
+	background: #86B369 url(../images/editor/green5.png) repeat-x scroll 0 50%;
+}
+.green5  #innerDivFoot{
+	background: #86B369 url(../images/editor/green5_revert.png) repeat-x scroll 0 50%;
+}
+.green5 h1, .green5 h2, .green5 h3, .green5 h4{
+	color: #86B369;
+}
+.green5  #innerDivHeader h1, .green5  #innerDivHeader h2, .green5  #innerDivHeader h3, .green5  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.green5  #innerDivFoot h1, .green5  #innerDivFoot h2, .green5  #innerDivFoot h3, .green5  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Red 1 Style*/
+.red1 #innerDivHeader{
+	background: #FF7273 url(../images/editor/red1.png) repeat-x scroll 0 50%;
+}
+.red1  #innerDivFoot{
+	background: #FF7273 url(../images/editor/red1_revert.png) repeat-x scroll 0 50%;
+}
+.red1 h1, .red1 h2, .red1 h3, .red1 h4{
+	color: #FF7273;
+}
+.red1  #innerDivHeader h1, .red1  #innerDivHeader h2, .red1  #innerDivHeader h3, .red1  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.red1  #innerDivFoot h1, .red1  #innerDivFoot h2, .red1  #innerDivFoot h3, .red1  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Red 2 Style*/
+.red2 #innerDivHeader{
+	background: #F02212 url(../images/editor/red2.png) repeat-x scroll 0 50%;
+}
+.red2  #innerDivFoot{
+	background: #F02212 url(../images/editor/red2_revert.png) repeat-x scroll 0 50%;
+}
+.red2 h1, .red2 h2, .red2 h3, .red2 h4{
+	color: #F02212;
+}
+.red2  #innerDivHeader h1, .red2  #innerDivHeader h2, .red2  #innerDivHeader h3, .red2  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.red2  #innerDivFoot h1, .red2  #innerDivFoot h2, .red2  #innerDivFoot h3, .red2  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Orange 1 Style*/
+.orange1 #innerDivHeader{
+	background: #F9C363 url(../images/editor/orange1.png) repeat-x scroll 0 50%;
+}
+.orange1  #innerDivFoot{
+	background: #F9C363 url(../images/editor/orange1_revert.png) repeat-x scroll 0 50%;
+}
+.orange1 h1, .orange1 h2, .orange1 h3, .orange1 h4{
+	color: #F9C363;
+}
+.orange1  #innerDivHeader h1, .orange1  #innerDivHeader h2, .orange1  #innerDivHeader h3, .orange1  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.orange1  #innerDivFoot h1, .orange1  #innerDivFoot h2, .orange1  #innerDivFoot h3, .orange1  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+
+/*Orange 2 Style*/
+.orange2 #innerDivHeader{
+	background: #FF9f27 url(../images/editor/orange2.png) repeat-x scroll 0 50%;
+}
+.orange2  #innerDivFoot{
+	background: #FF9f27 url(../images/editor/orange2_revert.png) repeat-x scroll 0 50%;
+}
+.orange2 h1, .orange2 h2, .orange2 h3, .orange2 h4{
+	color: #FF9f27;
+}
+.orange2  #innerDivHeader h1, .orange2  #innerDivHeader h2, .orange2  #innerDivHeader h3, .orange2  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.orange2  #innerDivFoot h1, .orange2  #innerDivFoot h2, .orange2  #innerDivFoot h3, .orange2  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Grey Style*/
+.grey #innerDivHeader{
+	background: #E3E3E3 url(../images/editor/grey.png) repeat-x scroll 0 50%;
+}
+.grey  #innerDivFoot{
+	background: #E3E3E3 url(../images/editor/grey_revert.png) repeat-x scroll 0 50%;
+}
+.grey h1, .grey h2, .grey h3, .grey h4{
+	color: #CFCFCF;
+}
+.grey  #innerDivHeader h1, .grey  #innerDivHeader h2, .grey  #innerDivHeader h3, .grey  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.grey  #innerDivFoot h1, .grey  #innerDivFoot h2, .grey  #innerDivFoot h3, .grey  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*Pink Style*/
+.pink #innerDivHeader{
+	background: #FA3E9F url(../images/editor/pink.png) repeat-x scroll 0 50%;
+}
+.pink  #innerDivFoot{
+	background: #FA3E9F url(../images/editor/pink_revert.png) repeat-x scroll 0 50%;
+}
+.pink h1, .pink h2, .pink h3, .pink h4{
+	color: #FA3E9F;
+}
+.pink  #innerDivHeader h1, .pink  #innerDivHeader h2, .pink  #innerDivHeader h3, .pink  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.pink  #innerDivFoot h1, .pink  #innerDivFoot h2, .pink  #innerDivFoot h3, .pink  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
+
+/*EU Style*/
+.eu #innerDivHeader{
+	background: #2580C3 url(../images/editor/eu.jpg) ;
+}
+.eu  #innerDivFoot{
+	background: #2580C3 url(../images/editor/eu_revert.jpg) ;
+}
+.eu h1, .eu h2, .eu h3, .eu h4{
+	color: #2580C3;
+}
+.eu  #innerDivHeader h1, .eu  #innerDivHeader h2, .eu  #innerDivHeader h3, .eu  #innerDivHeader h4{
+	color:#FFFFFF;
+}
+.eu  #innerDivFoot h1, .eu  #innerDivFoot h2, .eu  #innerDivFoot h3, .eu  #innerDivFoot h4 {
+	color:#FFFFFF;
+}
