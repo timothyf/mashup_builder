@@ -1,2 +1,4 @@
-== mashup_builder
-This is a pure JavaScript application which can be used to easily create mashups of web services.
+Mashup Builder is a pure JavaScript application that provides a graphical user interface for building mashup easily. 
+In few minutes you can combine information obtained of REST services, this information can be modified with operators 
+and later presented with a wide variety of renders. For example, Flickr, Google, Yahoo or Delicious services can be 
+mixed to get a mashup
