@@ -13,7 +13,7 @@ var fragmentsrenders = new afrous.UnitActionPackage('Renderer.FragmentRenders', 
   label : 'Fragment Renderers'
 });
 
-afrous.packages.loadScript(afrous.baseURL + '/js/jquery/jquery.js');
+afrous.packages.loadScript(afrous.baseURL + '/js/jquery/jquery-1.4.2.min.js');
 afrous.packages.loadScript(afrous.baseURL + '/js/afrous/renderers/fragments/portal-mashups.js');
 afrous.packages.loadScript(afrous.baseURL + '/js/jquery/form.js');
 

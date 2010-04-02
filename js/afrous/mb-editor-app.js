@@ -360,7 +360,14 @@ Ext.extend(MashupBuilder, Ext.util.Observable, {
     var procConfig = this.rootProcessPanel.processDef.toConfig();
     var buf = [];
 	buf.push('<link rel="stylesheet" href="' + afrous.packages.scriptBaseURL + '/renderers/style.css" type="text/css" />');
-    buf.push('<script type="text/javascript" src="'+afrous.packages.scriptBaseURL+'/afrous-config.js"></script>');
+    
+    mbuilder.lang.forEach(mbuilder.lang.values(procConfig.requires), function(scriptURL) {
+      if(scriptURL.endsWith("js/afrous/renderers/smile-widgets.js")){
+	  	buf.push('<script src="http://api.simile-widgets.org/timeplot/1.1/timeplot-api.js" type="text/javascript"></script>');
+      }
+    });
+	buf.push('<script type="text/javascript" src="'+afrous.packages.scriptBaseURL+'/../jquery/jquery-1.4.2.min.js"></script>')
+	buf.push('<script type="text/javascript" src="'+afrous.packages.scriptBaseURL+'/afrous-config.js"></script>');
 	buf.push('<script type="text/javascript" src="'+afrous.packages.scriptBaseURL+'/afrous-core.js"></script>');
     buf.push('<script type="text/javascript" src="'+afrous.packages.scriptBaseURL+'/afrous-el.js"></script>');
 	buf.push('<script type="text/javascript" src="'+afrous.packages.scriptBaseURL+'/afrous-ajax.js"></script>');
@@ -372,11 +379,9 @@ Ext.extend(MashupBuilder, Ext.util.Observable, {
 	buf.push('<script type="text/javascript" src="'+afrous.packages.scriptBaseURL+'/operators/string-operators.js"></script>');
 	
     mbuilder.lang.forEach(mbuilder.lang.values(procConfig.requires), function(scriptURL) {
-      if(scriptURL.endsWith("js/afrous/renderers/smile-widgets.js")){
-	  	buf.push('<script src="http://api.simile-widgets.org/timeplot/1.1/timeplot-api.js" type="text/javascript"></script>');
-      }
       buf.push('<script type="text/javascript" src="'+scriptURL+'"></script>');
     });
+
     delete procConfig.requires;
 
     buf.push('<script type="text/javascript">');
