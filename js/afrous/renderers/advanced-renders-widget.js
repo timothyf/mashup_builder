@@ -16,7 +16,7 @@ Ext.extend(DivWidget, afrous.editor.ActionWidget, {
   renderInputFields : function() {
     DivWidget.superclass.renderInputFields.apply(this, arguments);
 
-    afrous.lang.forEach(
+    mbuilder.lang.forEach(
       this.getPropertyFields(),
       function (field) {
         field.store.removeAll();
@@ -28,31 +28,31 @@ Ext.extend(DivWidget, afrous.editor.ActionWidget, {
   ,
 
   getPropertyFields : function() {
-    return afrous.lang.filter(this.inputFields, function(f) {
+    return jQuery.grep(this.inputFields, function(f) {
       return /^(row|column)Field/.test(f.getName());
     });
   }
   ,
 
   getDivFields : function() {
-    return afrous.lang.filter(this.inputFields, function(f) {
+    return jQuery.grep(this.inputFields, function(f) {
       return /^div[0-9]+/.test(f.getName());
     });
   }
   ,
 
   generateInputs : function() {
-    var rowsField = afrous.lang.find(this.inputFields, function(f) {
+    var rowsField = mbuilder.lang.find(this.inputFields, function(f) {
       return f.getName()=='rowField';
     });
-    var colsField = afrous.lang.find(this.inputFields, function(f) {
+    var colsField = mbuilder.lang.find(this.inputFields, function(f) {
       return f.getName()=='columnField';
     });
     var cols  = colsField.getValue();
     var rows  = rowsField.getValue();
     var cells = cols * rows;
     
-    afrous.lang.forEach(
+    mbuilder.lang.forEach(
       this.getDivFields(),
       function (field) {
         field.destroy();

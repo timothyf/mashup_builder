@@ -48,7 +48,7 @@ fragmentsrenders.register(new afrous.RenderingUnitAction({
 	  tagName : 'div',
 	  id : "fragment_render_" + Math.floor(10000 * Math.random())
     };
-    var destination_div = afrous.dom.createElement(destination_div_attr);
+    var destination_div = mbuilder.dom.createElement(destination_div_attr);
     
 	var options = {
 	  rewriteURLs : rewrite_urls,

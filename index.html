@@ -2,37 +2,45 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
-    <title>MyCocktail - Romulus Mashup Builder</title>
+    <title>Mashup Builder</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <link type="text/css" rel="stylesheet" href="./extjs/resources/css/ext-all.css"></link>
-    <link type="text/css" rel="stylesheet" href="./extjs/resources/css/xtheme-aero.css"></link>
+    <link type="text/css" rel="stylesheet" href="./js/extjs/resources/css/ext-all.css"></link>
+    <link type="text/css" rel="stylesheet" href="./js/extjs/resources/css/xtheme-aero.css"></link>
     <link type="text/css" rel="stylesheet" href="./css/afrous-editor.css"></link>
     <link rel="shortcut icon" href="./images/romulus.ico"></link>
+	<script src="http://api.simile-widgets.org/timeplot/1.1/timeplot-api.js" type="text/javascript"></script> 
   </head>
+  
   <body>
-    <img id="af-xd-dummy" src="./extjs/resources/images/aero/s.gif" style="display:none" />
+
     <div id="container">
-      <div id="af-header" class="x-layout-inactive-content">
-        <div id="af-header-icon"></div>
-        <div id="af-title"></div>
-        <div id="af-menubar"></div>
+       <div id="af-header" class="x-layout-inactive-content">
       </div>
     </div>
+	
     <script type="text/javascript" src="./js/afrous/renderers/plotr/lib/prototype/prototype.js"></script>
-    <script type="text/javascript" src="./js/jquery/jquery.js"></script>
-    <script type="text/javascript" src="./extjs/adapter/jquery/jquery-plugins.js"></script>
-    <script type="text/javascript" src="./extjs/adapter/jquery/ext-jquery-adapter.js"></script>
-    <script type="text/javascript" src="./extjs/ext-all.js"></script>
+    <script type="text/javascript" src="./js/jquery/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="./js/extjs/adapter/jquery/jquery-plugins.js"></script>
+    <script type="text/javascript" src="./js/extjs/adapter/jquery/ext-jquery-adapter.js"></script>
+    <script type="text/javascript" src="./js/extjs/ext-all.js"></script>
     <script type="text/javascript" src="./js/afrous/afrous-config.js"></script>
-    <script type="text/javascript" src="./js/afrous/afrous-core.js"></script>
-    <script type="text/javascript" src="./js/afrous/afrous-package.js"></script>
+	<script type="text/javascript" src="./js/afrous/afrous-core.js"></script>
+	<script type="text/javascript" src="./js/afrous/afrous-el.js"></script>
+	<script type="text/javascript" src="./js/afrous/afrous-ajax.js"></script>
+	<script type="text/javascript" src="./js/afrous/afrous-process.js"></script>
+	<script type="text/javascript" src="./js/afrous/afrous-action.js"></script>
+    <script type="text/javascript" src="./js/afrous/afrous-render.js"></script>
+	<script type="text/javascript" src="./js/afrous/afrous-ui-components.js"></script>
+	<script type="text/javascript" src="./js/afrous/mb-editor-app.js"></script>
+	<script type="text/javascript" src="./js/afrous/mb-editor-library-panel.js"></script>
+	<script type="text/javascript" src="./js/afrous/mb-editor-process-panel.js"></script>
+	<script type="text/javascript" src="./js/afrous/mb-editor-params-panel.js"></script>
     <script type="text/javascript" src="./js/afrous/afrous-editor.js"></script>
     <script type="text/javascript" src="./js/afrous/afrous-editor-ss-ext.js"></script>
     <script type="text/javascript" src="./js/afrous/afrous-editor-init.js"></script>
     <script type="text/javascript" src="./js/afrous/afrous-widget.js"></script>
-    <script type="text/javascript" src="./js/romulus/ie-warning.js"></script>
-    <script type="text/javascript" src="./smile-widgets/timeline/timeline_js/timeline-config.js"></script>
-    <script type="text/javascript" src="./smile-widgets/timeline/timeline_js/timeline-api.js"></script>
+    <script type="text/javascript" src="./js/ie-warning.js"></script>
+
   </body>
 </html>
 

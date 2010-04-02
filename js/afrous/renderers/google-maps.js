@@ -86,7 +86,7 @@ google.register(new afrous.RenderingUnitAction({
     if(zoomController == 'true')
       zoomController = true;
 
-    var iframe = afrous.dom.createElement({
+    var iframe = mbuilder.dom.createElement({
       tagName : 'iframe',
       width : width,
       height : height,
@@ -187,6 +187,10 @@ google.register(new afrous.RenderingUnitAction({
     { name : 'records',
       label : 'Input Records',
       type : 'Object[]' },
+    { name : 'useFirstRow',
+      label : 'Use First Row?',
+      type : 'String',
+      formElement : "CHECK_BOX" },
     { name : 'labelField',
       label : 'Label Field',
       type : 'String',
@@ -195,6 +199,12 @@ google.register(new afrous.RenderingUnitAction({
       label : 'Address Field',
       type : 'String',
       options : [] },
+    { name : 'latField',
+      label : 'Latitude Field',
+      type : 'String' },
+    { name : 'longField',
+      label : 'Longitude Field',
+      type : 'String' },
     { name : 'width',
       label : 'Width',
       type : 'Integer' },
@@ -225,6 +235,9 @@ google.register(new afrous.RenderingUnitAction({
       return;
     var labelField = params['labelField'];
     var valueField = params['valueField'];
+	
+	var latField = params['latField'];  // latitude
+	var longField = params['longField']; // longitude
     
     var width  = params['width']  || 500;
     var height = params['height'] || 200;
@@ -243,7 +256,12 @@ google.register(new afrous.RenderingUnitAction({
     if(zoomController == 'true')
       zoomController = true;
 
-    var iframe = afrous.dom.createElement({
+    var useFirstRow = false;
+    useFirstRow = params['useFirstRow'] || false;
+    if(useFirstRow == 'true')
+      useFirstRow = true;
+	  
+    var iframe = mbuilder.dom.createElement({
       tagName : 'iframe',
       width : width,
       height : height,
@@ -255,44 +273,54 @@ google.register(new afrous.RenderingUnitAction({
     if (iframe.contentWindow) {
       var doc = iframe.contentWindow.document;
       doc.open();
-      renderMapWithMarkers(doc, records, width, height, labelField, valueField, mapTypeController, zoomController, mapType, apiKey); 
+      renderMapWithMarkers(doc, records, width, height, labelField, valueField, latField, longField, mapTypeController, zoomController, mapType, apiKey, useFirstRow); 
       doc.close(); 
     }
   }
 
 }))
 
-function renderMapWithMarkers(doc, records, width, height, labelField, valueField, mapTypeController, zoomController, mapType, apiKey) {
+function renderMapWithMarkers(doc, records, width, height, labelField, valueField, latField, longField, mapTypeController, zoomController, mapType, apiKey, useFirstRow) {
 
   var dataset = [];
-  afrous.lang.forEach(records, function(r, i) {
+  if (!useFirstRow) {
+  	records = records.slice(1);
+  }
+  mbuilder.lang.forEach(records, function(r, i) {
     var label = r[labelField] || i;
-    var location = afrous.lang.cast('String', r[valueField] || r);
-    dataset.push({location: location, label: label});
+    var location = mbuilder.lang.cast('String', r[valueField] || r);
+	var lat = r[latField];
+	var longv = r[longField];
+    dataset.push({location: location, label: label, lat: lat, longv:longv});
   })
   
+  // Results in a string that contains JavaScript statements to add a marker for each point
   function drawAllPoints(){
     var string = '';
     var points = [];
-    for(var i=0; i<dataset.length; i++)
-    {
-      var rep = false;
-      for(var j=i+1; j<dataset.length; j++)
-      {
-        if(dataset[i]['location'] == dataset[j]['location'] && dataset[i]['label'] != dataset[j]['label'])
-        {
+    for(var i=0; i<dataset.length; i++) {
+      var repeated = false;
+	  // look for points that have the same location but different labels
+	  // if found, create only 1 point with both labels concatenated
+      for(var j=i+1; j<dataset.length; j++) {
+        if(dataset[i]['location'] == dataset[j]['location'] && dataset[i]['label'] != dataset[j]['label']) {
           dataset[j]['label'] = dataset[i]['label'] + '<br>' + dataset[j]['label'];
-          rep = true;
+          repeated = true;
           break;
         }
       }
-      if(!rep)
-        points.push(dataset[i]);
-    }
-    dataset = points;
-    dataset.forEach(function(point){
-      string = string+'findLocationAndAddMarker(markers,"'+point['location']+'", "'+point['label']+'");';
-    });
+      if (!repeated) {
+	  	points.push(dataset[i]);
+	  }
+    }	
+	dataset.forEach(function(point){
+		if (point['lat'] && point['lat'] != '') {
+			string = string + 'addLatLongMarker(' + point['lat'] + ',' + point['longv'] + ', "' + point['label'] + '");';
+		}
+		else {
+			string = string + 'findLocationAndAddMarker(markers,"' + point['location'] + '", "' + point['label'] + '");';
+		}
+	});	
     return string;
   }
 
@@ -327,6 +355,11 @@ drawAllPoints(),
 '          }',
 '        );',
 '      }',  
+'    }',
+'    function addLatLongMarker(lat, longv, label)',
+'    {',
+'	   var geoPoint = new GLatLng(lat, longv);',
+'      addMarker(geoPoint, label);',
 '    }',
 '    function addMarker(point, label)',
 '    {',
@@ -367,31 +400,32 @@ drawAllPoints(),
 
 }
 
-function setMapType(mapType)
-{
-  function auxSetMapType(type)
-  {
+function setMapType(mapType) {
+	
+  function auxSetMapType(type) {
     return 'map.setMapType('+type+')';
   }
 
-  if(mapType == SATELITE_TYPE_MAP)
-    return auxSetMapType('G_SATELLITE_MAP');
-  if(mapType == HYBRID_MAP)
-    return auxSetMapType('G_HYBRID_MAP');
+  if (mapType == SATELITE_TYPE_MAP) {
+  	return auxSetMapType('G_SATELLITE_MAP');
+  }
+  else if (mapType == HYBRID_MAP) {
+  	return auxSetMapType('G_HYBRID_MAP');
+  }
   return auxSetMapType('G_NORMAL_MAP');
 }
 
-function addZoomMapController(controller)
-{
-  if(controller)
+function addZoomMapController(controller) {
+  if(controller) {
     return 'map.addControl(new GLargeMapControl());'
+  }
   return '';
 }
 
-function addTypeMapController(controller)
-{
-  if(controller)
+function addTypeMapController(controller) {
+  if(controller) {
     return 'map.addControl(new GMapTypeControl());'
+  }
   return '';
 }
 

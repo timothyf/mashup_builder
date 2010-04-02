@@ -44,21 +44,21 @@ advancedrenders.register(new afrous.RenderingUnitAction({
     var bold   = params['bold'];
     var text   = params['text'] || '';
      
-    var font = afrous.dom.createElement({tagName : 'font', color : color, size : size});
+    var font = mbuilder.dom.createElement({tagName : 'font', color : color, size : size});
     el.appendChild(font);
     if(bold == 'true')
     {
-      var strong = afrous.dom.createElement({tagName : 'strong'});
+      var strong = mbuilder.dom.createElement({tagName : 'strong'});
       font.appendChild(strong);
       font = strong;
     }
     if(italic == 'true')
     {
-      var emphasis = afrous.dom.createElement({tagName : 'em'});
+      var emphasis = mbuilder.dom.createElement({tagName : 'em'});
       font.appendChild(emphasis);
       font = emphasis;
     }
-    afrous.dom.writeValue(font,  text);
+    mbuilder.dom.writeValue(font,  text);
   }
 }));
 
@@ -89,9 +89,9 @@ advancedrenders.register(new afrous.RenderingUnitAction({
     var title = params['title'];
     var text  = params['text']
     
-    var htitle = afrous.dom.createElement({tagName : title});
+    var htitle = mbuilder.dom.createElement({tagName : title});
     el.appendChild(htitle);
-    afrous.dom.writeValue(htitle,  text);
+    mbuilder.dom.writeValue(htitle,  text);
   }
 }));
 
@@ -228,13 +228,13 @@ function appendDiv(containerDiv, content, width, height, floatt)
 {
   var innerDiv = createDiv(width,height,floatt);
   containerDiv.appendChild(innerDiv);
-  afrous.dom.writeValue(innerDiv,  content);
+  mbuilder.dom.writeValue(innerDiv,  content);
 }
   
 function createDiv(width, height, floatt)
 {
   var _floatt = floatt || 'left';
-  return afrous.dom.createElement({tagName : 'div', style : 'float: '+_floatt+';  height: '+height+';  width: '+width+';'});
+  return mbuilder.dom.createElement({tagName : 'div', style : 'float: '+_floatt+';  height: '+height+';  width: '+width+';'});
 }
 
 // if in afrous editor

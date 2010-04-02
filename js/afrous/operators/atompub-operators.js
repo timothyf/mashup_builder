@@ -84,7 +84,7 @@ var atomPubPostOperator = new afrous.UnitAction({
 		
 	var	mycallback = {
         onSuccess: function(data){
-	        callback.onSuccess(afrous.lang.xmlToJson(data));
+	        callback.onSuccess(mbuilder.lang.xmlToJson(data));
         },
         onFailure: callback.onFailure
     };

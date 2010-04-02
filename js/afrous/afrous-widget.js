@@ -1,7 +1,3 @@
-/*  
-  Afrous JavaScript - Standard Widgets
-  (c) 2007 Shinichi Tomita
-*/
 
 (function() {
 
@@ -10,11 +6,10 @@ var ArrayBindingWidget = function() {
 }
 
 Ext.extend(ArrayBindingWidget, afrous.editor.ActionWidget, {
-
   renderInputFields : function() {
     ArrayBindingWidget.superclass.renderInputFields.apply(this, arguments);
 
-    afrous.lang.forEach(
+    mbuilder.lang.forEach(
       this.getPropertyFields(),
       function (field) {
         field.store.removeAll();
@@ -24,16 +19,14 @@ Ext.extend(ArrayBindingWidget, afrous.editor.ActionWidget, {
     );
   }
   ,
-
   getPropertyFields : function() {
-    return afrous.lang.filter(this.inputFields, function(f) {
+    return jQuery.grep(this.inputFields, function(f) {
       return f.getName()=='property';
     });
   }
   ,
-
   suggestProperties : function() {
-    var arrField = afrous.lang.find(this.inputFields, function(f) {
+    var arrField = mbuilder.lang.find(this.inputFields, function(f) {
       return f.getName()=='array';
     });
     this.processPanel.process.evaluate(
@@ -42,26 +35,24 @@ Ext.extend(ArrayBindingWidget, afrous.editor.ActionWidget, {
     );
   }
   ,
-
   handleArrayResult : function(result) {
-    var elem = afrous.lang.cast('object[]', result.value)[0]
-    if (afrous.lang.isObject(elem)) {
-      var keys = afrous.lang.keys(elem);
+    var elem = mbuilder.lang.cast('object[]', result.value)[0]
+    if (mbuilder.lang.isObject(elem)) {
+      var keys = mbuilder.lang.keys(elem);
       keys = keys.filter(function(x) {
         return !/^(myCocktailName|myCocktailIcon)$/.test(x);
       });
-      afrous.lang.forEach(
+      mbuilder.lang.forEach(
         this.getPropertyFields(),
         function (field) {
           field.store.loadData(
-            afrous.lang.map(keys, function(k){ return [k, k] })
+            mbuilder.lang.map(keys, function(k){ return [k, k] })
           ); 
         },
         this
       );
     }
   }
-
 });
 
 afrous.editor.widgets.register('Array.Pluck', ArrayBindingWidget);
@@ -79,18 +70,16 @@ var ArrayFilterWidget = function() {
   ArrayFilterWidget.superclass.constructor.apply(this, arguments);
 }
 
-Ext.extend(ArrayFilterWidget, ArrayBindingWidget, {
 
+Ext.extend(ArrayFilterWidget, ArrayBindingWidget, {
   renderInputFields : function() {
     var inputs = this.actionDef.inputs;
-
     this.inputToolbar.el.show();
     this.inputToolbar.addButton({
       text: 'Add New Condition',
       cls: 'x-btn-text-icon af-add-btn',
       handler: this.createCondition.createDelegate(this)
     });
-
     var arrayField = this.createBindField(this.uaction.inputs['array']);
     if (inputs && inputs['array']) {
       arrayField.setValue(inputs['array']);
@@ -116,17 +105,14 @@ Ext.extend(ArrayFilterWidget, ArrayBindingWidget, {
         condition.valfield.setValue(inputs[val]);
       }
     }
-
   }
   ,
-
   getPropertyFields : function() {
-    return afrous.lang.filter(this.inputFields, function(f) {
+    return jQuery.grep(this.inputFields, function(f) {
       return f.getName().indexOf('property')==0;
     });
   }
   ,
-
   createCondition : function() {
     var condition = new FilterConditionFieldSet(this.inputArea.createChild(), this, this.conditions.length);
     condition.property.on('change', this.handleChangeBinding, this);
@@ -141,7 +127,6 @@ Ext.extend(ArrayFilterWidget, ArrayBindingWidget, {
     this.conditions.push(condition);
     return condition;
   }
-
 });
 
 
@@ -151,11 +136,8 @@ Ext.extend(ArrayFilterWidget, ArrayBindingWidget, {
 var FilterConditionFieldSet = function(el, widget, index) {
   this.el = el;
   this.el.addClass('af-actionfield');
-
   this.widget = widget;
- 
   var form = new Ext.form.Form({ labelWidth : 10 });
-
   this.deleteBtn = new Ext.form.TriggerField({
     width : 10,
     cls : 'af-actionfield-delete',
@@ -193,7 +175,6 @@ var FilterConditionFieldSet = function(el, widget, index) {
   this.property.store = property.store;
   this.operand = new ControlField(operand);
   this.valfield = new ControlField(valfield);
-
 }
 
 FilterConditionFieldSet.prototype = {
@@ -228,26 +209,20 @@ var ControlField = function(control) {
 }
 
 Ext.extend(ControlField, afrous.editor.ActionInputField, {
-
   getName : function() {
     return this.control.getName();
   }  
   ,
-
   getValue : function() {
     return this.control.getValue();
   }
   ,
-
   destroy : function() {
     this.control.un('change', this.handleChange);
     this.fireEvent('destroy', this);
   }
-
 });
 
-
 afrous.editor.widgets.register('Array.Filter', ArrayFilterWidget);
-
 
 })();

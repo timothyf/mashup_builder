@@ -12,7 +12,7 @@ var widgets = new afrous.UnitActionPackage('Renderer.Widgets', {
   label : 'Widgets'
 });
 
-afrous.packages.loadScript(afrous.baseURL + '/js/swfobject/swfobject.js');
+afrous.packages.loadScript(afrous.baseURL + '/js/swfobject.js');
 
 widgets.register(new afrous.RenderingUnitAction({
 
@@ -63,7 +63,7 @@ widgets.register(new afrous.RenderingUnitAction({
     if (backgroundTrans)
         parameters.wmode = "transparent";
 
-    var div = afrous.dom.createElement({tagName: 'div', id : generateId()});
+    var div = mbuilder.dom.createElement({tagName: 'div', id : generateId()});
     el.appendChild(div);
     swfobject.embedSWF('http://media.roytanck.com/flickrwidget.swf',
                        div.id,
@@ -121,9 +121,9 @@ widgets.register(new afrous.RenderingUnitAction({
     var photoLinkField  = params['photoLinkField'] || '';
 
     var xml = "<images>";
-    afrous.lang.forEach(records, function(r, i) {
-      var photoLink = afrous.lang.cast('String', r[photoLinkField] || r);
-      var photoURL  = afrous.lang.cast('String', r[photoURLField]  || r);
+    mbuilder.lang.forEach(records, function(r, i) {
+      var photoLink = mbuilder.lang.cast('String', r[photoLinkField] || r);
+      var photoURL  = mbuilder.lang.cast('String', r[photoURLField]  || r);
       xml += "<image href='"+photoLink+"'>"+photoURL+"</image>";
     });
     xml += "</images>";
@@ -141,7 +141,7 @@ widgets.register(new afrous.RenderingUnitAction({
     if (backgroundTrans)
         parameters.wmode = "transparent";
 
-    var div = afrous.dom.createElement({tagName: 'div', id : generateId()});
+    var div = mbuilder.dom.createElement({tagName: 'div', id : generateId()});
     el.appendChild(div);
     swfobject.embedSWF(afrous.baseURL+'/swf/photowidget.swf',
                        div.id,
@@ -218,9 +218,9 @@ widgets.register(new afrous.RenderingUnitAction({
     var elemNum = records.length;
 
     var tag = "<tags>";
-    afrous.lang.forEach(records, function(r, i) {
-      var tagURL  = baseURL+afrous.lang.cast('String', r[tagURLField]  || r);
-      var tagName = afrous.lang.cast('String', r[tagNameField] || r);
+    mbuilder.lang.forEach(records, function(r, i) {
+      var tagURL  = baseURL+mbuilder.lang.cast('String', r[tagURLField]  || r);
+      var tagName = mbuilder.lang.cast('String', r[tagNameField] || r);
       var tagSize = r[tagSizeField] || (8+elemNum--);
       tag += "<a href='"+tagURL+"' style='"+tagSize+"'>"+tagName+"</a>";
     });
@@ -242,7 +242,7 @@ widgets.register(new afrous.RenderingUnitAction({
     if (backgroundTrans)
         parameters.wmode = "transparent";
 
-    var div = afrous.dom.createElement({tagName: 'div', id : generateId()});
+    var div = mbuilder.dom.createElement({tagName: 'div', id : generateId()});
     el.appendChild(div);
     swfobject.embedSWF(afrous.baseURL+'/swf/tagcloud.swf',
                        div.id,
@@ -291,7 +291,7 @@ widgets.register(new afrous.RenderingUnitAction({
             'trustedOrigin' : 'nvmodules.netvibes.com'\
         });";
 
-    var manageWidgetScriptNode = afrous.dom.createElement({tagName: 'script', type : "text/javascript"});
+    var manageWidgetScriptNode = mbuilder.dom.createElement({tagName: 'script', type : "text/javascript"});
     manageWidgetScriptNode.appendChild(document.createTextNode(manageWidgetScript));
     el.appendChild(manageWidgetScriptNode);
 
@@ -301,7 +301,7 @@ widgets.register(new afrous.RenderingUnitAction({
 		"&id=" + encodeURI(id) +
 		"&ifproxyUrl=" + ifproxyURL;
 
-	var widgetIFrameNode = afrous.dom.createElement({tagName : 'iframe', id : 'frame_' + id, frameborder : '0', scrolling : 'no', src: iFrameURL, width : '100%'});
+	var widgetIFrameNode = mbuilder.dom.createElement({tagName : 'iframe', id : 'frame_' + id, frameborder : '0', scrolling : 'no', src: iFrameURL, width : '100%'});
 
 	el.appendChild(widgetIFrameNode);
   }
@@ -323,10 +323,10 @@ widgets.register(new afrous.RenderingUnitAction({
     var gadgetURL = params['gadgetURL'];
 
     var gadgetAsJSURL = "http://gmodules.com/ig/ifr?url=" + encodeURI(gadgetURL) + "&synd=open&w=auto&title=&border=none&output=js";
-   var loadGadgetScriptNode = afrous.dom.createElement({tagName: 'script', type : "text/javascript", src : gadgetAsJSURL});
+   var loadGadgetScriptNode = mbuilder.dom.createElement({tagName: 'script', type : "text/javascript", src : gadgetAsJSURL});
    el.appendChild(loadGadgetScriptNode);
 
-//     var widgetIFrameNode = afrous.dom.createElement({tagName : 'iframe', frameborder : '0', src: gadgetAsJSURL});
+//     var widgetIFrameNode = mbuilder.dom.createElement({tagName : 'iframe', frameborder : '0', src: gadgetAsJSURL});
 
 	el.appendChild(widgetIFrameNode); 
   }

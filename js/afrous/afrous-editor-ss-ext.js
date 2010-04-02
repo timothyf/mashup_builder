@@ -1,9 +1,6 @@
 /*
- * Romulus Mashup Builder - Server side extension.
+ * Mashup Builder - Server side extension.
  * Plug-in to open and to save mashups from server and from disk.
- *
- * David del Pozo González
- * (c) 2008 Informática Gesfor
  */
 
 (function() {
@@ -12,7 +9,7 @@ var EditorAppExt = function(config){
   EditorAppExt.superclass.constructor.call(this,config);
 };
 
-Ext.extend(EditorAppExt, afrous.editor.EditorApp, {
+Ext.extend(EditorAppExt, afrous.editor.MashupBuilder, {
 
   setupLayout: function(){
     EditorAppExt.superclass.setupLayout.call(this);
@@ -54,7 +51,7 @@ Ext.extend(EditorAppExt, afrous.editor.EditorApp, {
       this.iframeSaveFile = document.createElement('iframe');
       document.body.appendChild(this.iframeSaveFile);
     }
-    this.iframeSaveFile.src = afrous.config.PROCESS_SAVE_LOC_ULR+'?json='+afrous.url.urlEncode(afrous.lang.toJSON(processConfig));
+    this.iframeSaveFile.src = mbuilder.config.PROCESS_SAVE_LOC_ULR+'?json='+mbuilder.url.urlEncode(mbuilder.lang.toJSON(processConfig));
   }
   ,
 
@@ -65,11 +62,11 @@ Ext.extend(EditorAppExt, afrous.editor.EditorApp, {
     if(!copying && this.processKeyID)
     {
       var processConfig = this.rootProcessPanel.processDef.toConfig();
-      var json = afrous.lang.toJSON(processConfig);
+      var json = mbuilder.lang.toJSON(processConfig);
 
       var conn = new Ext.data.Connection();
       conn.request({
-        url: afrous.config.PROCESS_SAVE_URL,
+        url: mbuilder.config.PROCESS_SAVE_URL,
         method: 'POST',
         params: {id: this.processKeyID, json: json},
         success: function(responseObject) {
@@ -126,7 +123,7 @@ Ext.extend(OpenProcessDialog, afrous.editor.AbstractCallbackDialog, {
 
     this.ds = new Ext.data.Store({
       proxy: new Ext.data.ScriptTagProxy({
-        url: afrous.config.PROCESS_PRIVATE_URL
+        url: mbuilder.config.PROCESS_PRIVATE_URL
       }),
 
       reader: new Ext.data.JsonReader({
@@ -233,7 +230,7 @@ var OpenProcessLocalDialog = function(editor) {
 
   var html =[
   '<div style="padding: 10px;"><p>Please select a file with a process stored or paste process config here in the text area.</p>',
-  '<form id="fileForm" method="POST" enctype="multipart/form-data" action="'+afrous.config.PROCESS_OPEN_URL+'" target="contentFileIframe">',
+  '<form id="fileForm" method="POST" enctype="multipart/form-data" action="'+mbuilder.config.PROCESS_OPEN_URL+'" target="contentFileIframe">',
   '  <input type="file" name="fileInput" id="fileInput" value="" size="38" onchange="afrous.editor.FileChooserEvent.onChangeFileChooser();" />',
   '</form>',
   '<textarea class="ext-mb-textarea" id="textareaFileContent" rows="14" cols="70"> </textarea>',
@@ -250,7 +247,7 @@ var OpenProcessLocalDialog = function(editor) {
 Ext.extend(OpenProcessLocalDialog, afrous.editor.AbstractCallbackDialog, {
 
   submit : function() {
-    var processConfig = afrous.lang.parseJSON(document.getElementById("textareaFileContent").value);
+    var processConfig = mbuilder.lang.parseJSON(document.getElementById("textareaFileContent").value);
     this.editor.newProcess();
     this.editor.loadProcessConfig(processConfig);
     this.hide();
@@ -335,12 +332,12 @@ Ext.extend(SaveProcessDialog, afrous.editor.AbstractCallbackDialog, {
 
     var processConfig = this.editor.rootProcessPanel.processDef.toConfig();
     processConfig.name = name;
-    var json = afrous.lang.toJSON(processConfig);
+    var json = mbuilder.lang.toJSON(processConfig);
 
     var _this = this;
     var conn = new Ext.data.Connection();
     conn.request({
-        url: afrous.config.PROCESS_SAVE_URL,
+        url: mbuilder.config.PROCESS_SAVE_URL,
         method: 'POST',
         params: {name: name, description: description, json: json},
         success: function(responseObject) {
@@ -380,7 +377,7 @@ Ext.extend(SaveProcessDialog, afrous.editor.AbstractCallbackDialog, {
 });
 
 
-var FileChooserEvent = afrous.lang.defineClass({
+var FileChooserEvent = mbuilder.lang.defineClass({
 
   initialize : function() {
   }
@@ -393,7 +390,7 @@ var FileChooserEvent = afrous.lang.defineClass({
 });
 
 
-afrous.editor.EditorApp = EditorAppExt;
+afrous.editor.MashupBuilder = EditorAppExt;
 
 afrous.editor.FileChooserEvent = new FileChooserEvent();
 afrous.editor.OpenProcessLocalDialog = {};

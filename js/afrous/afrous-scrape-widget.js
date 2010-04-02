@@ -9,21 +9,16 @@ var XPathScrapeWidget = function() {
 }
 
 Ext.extend(XPathScrapeWidget, afrous.editor.ActionWidget, {
-
   renderInputFields : function() {
-   
     this.inputToolbar.el.show();
     this.inputToolbar.addButton({
       text: 'Open XPath Selector',
       cls: 'x-btn-text-icon af-open-btn',
       handler: this.openXPathSelector.createDelegate(this)
     });
-
     XPathScrapeWidget.superclass.renderInputFields.apply(this, arguments);
-
   }
   ,
-
   openXPathSelector : function() {
     if (!this.xpathSelectorDialog) this.xpathSelectorDialog = new XPathSelectorDialog();
     var path = this.getInputValues()['path'];
@@ -32,19 +27,16 @@ Ext.extend(XPathScrapeWidget, afrous.editor.ActionWidget, {
     this.xpathSelectorDialog.show();
   }
   ,
-
   handleXPathSelection : function(params) {
-    afrous.lang.forEach(this.inputFields, function(field) {
+    mbuilder.lang.forEach(this.inputFields, function(field) {
       var name = field.getName()
       if (params[name]) field.setValue(params[name]);
     });
     this.handleChangeBinding();
   }
-
 });
 
 afrous.editor.widgets.register('Scrape.XPath', XPathScrapeWidget);
-
 
 
 /**
@@ -52,7 +44,6 @@ afrous.editor.widgets.register('Scrape.XPath', XPathScrapeWidget);
  * @extends AbstractCallbackDialog
  */
 var XPathSelectorDialog = function() {
- 
   XPathSelectorDialog.superclass.constructor.call(this, { 
     title : 'XPath Selector',
     modal : true,
@@ -63,15 +54,12 @@ var XPathSelectorDialog = function() {
   this.addKeyListener(27, this.hide, this);
   this.selectBtn = this.addButton('Select', this.selectXPath, this);
   this.selectBtn.disable();
-
   this.setup();
 }
 
 Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
-
   setup : function() {
     var size = this.body.getSize();
-
     this.iframeEl = this.body.createChild({ tag : 'iframe', style : 'width:'+(size.width-20)+'px;height:'+(size.height-110)+'px;'});
     this.iframeWrap = this.iframeEl.wrap({ style : 'text-align:center;margin:5px auto' });
 
@@ -88,24 +76,20 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
         width : size.width - 200
       })
     );
-
     this.startBtn = this.form.addButton('Start Scrape', this.startScraping, this);
     this.clearBtn = this.form.addButton('Clear', this.clear, this);
     this.startBtn.disable();
     this.clearBtn.disable();
     this.form.render(this.formEl);
-
     this.cxpathInput.on('change', this.evalContainerPath, this);
     this.xpathInput.on('change', this.evalXPath, this);
   }
   ,
-
   show : function() {
     this.loadContent();
     return XPathSelectorDialog.superclass.show.apply(this);
   }
   ,
-
   loadContent : function() {
     this.iframeEl.dom.contentWindow.location.href = this.path || location.href;
 
@@ -125,20 +109,17 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     }
   }
   ,
-
   hide : function() {
     this.clearForm();
     return XPathSelectorDialog.superclass.hide.apply(this);
   }
   ,
-
   clear : function() {
     this.path = this.iframeEl.dom.contentWindow.location.href;
     this.clearForm();
     this.loadContent();
   }
   ,
-
   clearForm : function() {
     this.mode = 'init';
     this.cxpathInput.setValue('');
@@ -147,14 +128,11 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     this.clearBtn.disable();
   }
   ,
-
   onContentReady : function() {
     this.startBtn.enable(); 
   }
   ,
-
   startScraping : function() {
-
     this.doc = this.iframeEl.dom.contentWindow.document;
     var scriptContainerElem = $(this.doc.documentElement).find('head,body').get(0);
     var script = this.doc.createElement('script');
@@ -174,7 +152,6 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     this.containerElem = null;
   }
   ,
-
   selectXPath : function() {
     this.callback.call(this.scope, {
       path : this.iframeEl.dom.contentWindow.location.href.replace(/^https?:\/\/[^\/]*/,''),
@@ -183,7 +160,6 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     this.hide();
   }
   ,
-
   handleMouseOver : function(event) {
     switch (this.mode) {
       case 'select-container' :
@@ -208,7 +184,6 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     event.stopPropagation();
   }
   ,
-  
   handleMouseOut : function(event) {
     switch (this.mode) {
       case 'select-container' :
@@ -224,7 +199,6 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     event.stopPropagation();
   } 
   ,
-  
   handleClick : function(event) {
     switch (this.mode) {
       case 'select-container' :
@@ -244,7 +218,6 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     event.stopPropagation();
   }
   ,
-
   overrideStyle : function(el, style) {
     if (!el) return;
     if (!el._styleCache) {
@@ -258,7 +231,6 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     $(el).css(style);
   }
   ,
-
   restoreStyle : function(el) {
     if (!el) return;
     if (el._styleCache) {
@@ -269,12 +241,10 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     }
   }
   ,
-
   isInContainer : function(el) {
     return $(el).parents().index(this.containerElem)>=0;
   }
   ,
-
   countMatchedNodes : function(xpath) {
     try {
       return this.doc.evaluate(xpath, this.doc, null, 7, null).snapshotLength;
@@ -283,7 +253,6 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     }
   }
   ,
-
   getElementsByXPath : function(xpath) {
     var elements = [];
     try {
@@ -296,7 +265,6 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     return elements;
   }
   ,
-
   calcXPath : function(el, childPath, single) {
     if (el==this.containerElem || el.nodeType==9) {
       return this.cxpathInput.getValue() + '/' + childPath;
@@ -313,7 +281,6 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     }
   }
   ,
-
   calcCompactXPath : function(el, single) {
     var path;
     if (single && el.id) {
@@ -336,21 +303,18 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     return this.calcXPath(el.parentNode, path, single);
   }
   ,
-
   calcStrictXPath : function(el, single) {
     var index = this.calcElementIndex(el);
     var path = el.tagName.toLowerCase() + (index ? '['+index+']' : '');
     return this.calcXPath(el.parentNode, path, single);
   }
   ,
-
   calcElementIndex : function(el) {
     if (!el.parentNode) return 0;
     var elements = $(el).parent().find('> '+el.tagName.toLowerCase());
     return elements.length>0 ? elements.index(el)+1 : 0;
   }
   ,
-
   clearSelection : function() {
     var dialog = this;
     $(this.doc.documentElement)
@@ -372,7 +336,6 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     this.mode = 'select-container';
   }
   ,
-
   evalContainerPath : function() {
     if (this.mode=='init') return;
     var dialog = this;
@@ -400,7 +363,6 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     this.mode = 'select-paragraph';
   }
   ,
-
   evalXPath : function() {
     if (this.mode=='init') return;
     var dialog = this;
@@ -422,8 +384,6 @@ Ext.extend(XPathSelectorDialog, afrous.editor.AbstractCallbackDialog, {
     this.mode = 'done';
     this.selectBtn.enable();
   }
-
 });
-
 
 })();

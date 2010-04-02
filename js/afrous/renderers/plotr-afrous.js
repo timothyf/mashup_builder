@@ -49,7 +49,7 @@ plotr.register(new afrous.RenderingUnitAction({
     var colorScheme = params['colorScheme'] || 'blue';
 
     var id = new Date().getTime();
-    var iframe = afrous.dom.createElement({
+    var iframe = mbuilder.dom.createElement({
       tagName : 'iframe',
       width : width,
       height : height,
@@ -72,9 +72,9 @@ function renderPieChart(doc, records, width, height, labelField, valueField, col
 
   var dataset = {};
   var xticks = [];
-  afrous.lang.forEach(records, function(r, i) {
+  mbuilder.lang.forEach(records, function(r, i) {
     var label = r[labelField] || i;
-    if(afrous.lang.isObject(label))
+    if(mbuilder.lang.isObject(label))
     {
       if(label.myCocktailName)
         label = label.myCocktailName;
@@ -83,8 +83,8 @@ function renderPieChart(doc, records, width, height, labelField, valueField, col
       else if(label.title)
         label = label.title;
     }
-    var seq = afrous.lang.map(
-      afrous.lang.cast('float[]', r[valueField] || r),
+    var seq = mbuilder.lang.map(
+      mbuilder.lang.cast('float[]', r[valueField] || r),
       function(v, i) { return [i, v] } 
     );
     dataset[label] = seq;
@@ -117,7 +117,7 @@ function renderPieChart(doc, records, width, height, labelField, valueField, col
 '  pie.render();',
 '}',
 'window.onload = function(){',
-'  render('+afrous.lang.toJSON(dataset)+','+afrous.lang.toJSON(options)+');',
+'  render('+mbuilder.lang.toJSON(dataset)+','+mbuilder.lang.toJSON(options)+');',
 '}',
 '</script>',
 '</head>',
@@ -183,7 +183,7 @@ plotr.register(new afrous.RenderingUnitAction({
     var colorScheme = params['colorScheme'] || 'blue';
 
     var id = new Date().getTime();
-    var iframe = afrous.dom.createElement({
+    var iframe = mbuilder.dom.createElement({
       tagName : 'iframe',
       width : width,
       height : height,
@@ -205,9 +205,9 @@ plotr.register(new afrous.RenderingUnitAction({
 function renderBarChart(doc, records, width, height, labelField, valueFields, colorScheme) {
 
   var x = {};
-  x.ticks = afrous.lang.map(records, function(record, i) {
+  x.ticks = mbuilder.lang.map(records, function(record, i) {
     var label = record[labelField]
-    if(afrous.lang.isObject(label))
+    if(mbuilder.lang.isObject(label))
     {
       if(label.myCocktailName)
         label = label.myCocktailName;
@@ -220,9 +220,9 @@ function renderBarChart(doc, records, width, height, labelField, valueFields, co
   });
 
   var dataset = {};
-  afrous.lang.forEach(valueFields, function(valueField) {
-    dataset[valueField] = afrous.lang.map(records, function(record, i) {
-      return [ i, afrous.lang.cast('float', record[valueField]) ]; 
+  mbuilder.lang.forEach(valueFields, function(valueField) {
+    dataset[valueField] = mbuilder.lang.map(records, function(record, i) {
+      return [ i, mbuilder.lang.cast('float', record[valueField]) ]; 
     });
   });
 
@@ -253,7 +253,7 @@ function renderBarChart(doc, records, width, height, labelField, valueFields, co
 '  bar.render();',
 '}',
 'window.onload = function(){',
-'  render('+afrous.lang.toJSON(dataset)+','+afrous.lang.toJSON(options)+');',
+'  render('+mbuilder.lang.toJSON(dataset)+','+mbuilder.lang.toJSON(options)+');',
 '}',
 '</script>',
 '</head>',

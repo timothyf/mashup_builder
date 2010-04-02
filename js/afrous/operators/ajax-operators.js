@@ -58,8 +58,8 @@ ajax.register(new afrous.UnitAction({
     var jsonpParam = null;
     if(format == 'JSON' || format == 'XML')
     {
-      var proxy      = afrous.config.JSONP_PROXY_URL+"?responseFormat="+format+"&url=";
-      var urlEncoded = afrous.url.urlEncode(request.params['url']);
+      var proxy      = mbuilder.config.JSONP_PROXY_URL+"?responseFormat="+format+"&url=";
+      var urlEncoded = mbuilder.url.urlEncode(request.params['url']);
       url = proxy + urlEncoded;
       jsonpParam = "callback";
     }

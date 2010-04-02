@@ -1,9 +1,3 @@
-/*  
- * MyCocktail
- * 
- * David del Pozo González
- * Informática Gesfor
- */
 
 (function() {
 
@@ -16,7 +10,7 @@ Ext.extend(JSONPWidget, afrous.editor.ActionWidget, {
   renderInputFields : function() {
     JSONPWidget.superclass.renderInputFields.apply(this, arguments);
 
-    afrous.lang.forEach(
+    mbuilder.lang.forEach(
       this.getPropertyFields(),
       function (field) {
         field.store.removeAll();
@@ -28,21 +22,21 @@ Ext.extend(JSONPWidget, afrous.editor.ActionWidget, {
   ,
 
   getPropertyFields : function() {
-    return afrous.lang.filter(this.inputFields, function(f) {
+    return jQuery.grep(this.inputFields, function(f) {
       return /^(format)Field/.test(f.getName());
     });
   }
   ,
 
   getCallbackParameterField : function() {
-    return afrous.lang.find(this.inputFields, function(f) {
+    return mbuilder.lang.find(this.inputFields, function(f) {
       return f.getName()=='jsonpParam';
     });
   }
   ,
 
   generateInputs : function() {
-    var formatField = afrous.lang.find(this.inputFields, function(f) {
+    var formatField = mbuilder.lang.find(this.inputFields, function(f) {
       return f.getName()=='formatField';
     });
 

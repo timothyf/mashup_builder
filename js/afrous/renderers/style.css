@@ -1,0 +1,7 @@
+.widget_table {
+	border: 1px solid gray;
+}
+
+.widget_table th {
+	background-color: lightgray;
+}

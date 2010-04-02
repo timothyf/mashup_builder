@@ -7,30 +7,9 @@ body {
 }
 #af-header {
   padding : 4px 10px;
-  height : 81px;
+  height : 5px;
   color : #fff;
   background : #AAAAAA url(./background.gif) repeat-x scroll 0px 0px;
-}
-
-#af-header #af-header-icon {
-  background-image : url(../images/mycocktail-logo.gif);
-  width : 360px;
-  height : 71px;
-  float : left;
-  margin : 2px;
-}
-
-#af-header #af-title {
-  color: #DDDDDD;
-  font-size : 18px;
-  font-weight : bold;
-  font-family : "Century Gothic",Verdana,Arial,Helvetica,sans-serif;
-  float : left;
-}
-
-#af-header #af-menubar {
-  margin-top : 4px;
-  float : right;
 }
 
 #af-status {
@@ -215,7 +194,7 @@ body {
 }
 
 .af-wgt-proxy {
-	background-image: url(../extjs/resources/images/default/gradient-bg.gif);
+	background-image: url(../js/extjs/resources/images/default/gradient-bg.gif);
 	background-color:#c3daf9;
 	border:1px solid #6593cf;
 	z-index:10001;
@@ -237,7 +216,7 @@ body {
 }
 .af-wgt .af-wgt-wgt-head {
 	cursor:move;
-	background: url(../extjs/resources/images/default/basic-dialog/hd-sprite.gif) repeat-x 0 -82px;
+	background: url(../js/extjs/resources/images/default/basic-dialog/hd-sprite.gif) repeat-x 0 -82px;
 	background-color:navy;
 	color:#FFF;
 	font:bold 12px "sans serif", tahoma, verdana, helvetica;
@@ -249,16 +228,16 @@ body {
   float : left;
 }
 .af-wgt .af-wgt-hd-left {
-	background: url(../extjs/resources/images/default/basic-dialog/hd-sprite.gif) no-repeat 0 -41px;
+	background: url(../js/extjs/resources/images/default/basic-dialog/hd-sprite.gif) no-repeat 0 -41px;
 	padding-left:3px;
 	margin:0;
 }
 .af-wgt .af-wgt-hd-right {
-	background: url(../extjs/resources/images/default/basic-dialog/hd-sprite.gif) no-repeat right 0;
+	background: url(../js/extjs/resources/images/default/basic-dialog/hd-sprite.gif) no-repeat right 0;
 	padding-right:3px;
 }
 .af-wgt .af-wgt-wgt-body{
-	background:url(../extjs/resources/images/default/layout/gradient-bg.gif);
+	background:url(../js/extjs/resources/images/default/layout/gradient-bg.gif);
 	border:1px solid #6593cf;
 	border-top:0 none;
 	padding:10px;
@@ -299,13 +278,13 @@ body {
 	visibility:inherit;
 }
 .af-wgt .af-wgt-close {
-  background-image:url(../extjs/resources/images/default/basic-dialog/close.gif);
+  background-image:url(../js/extjs/resources/images/default/basic-dialog/close.gif);
 }
 .af-wgt .af-wgt-collapse {
-  background-image:url(../extjs/resources/images/default/basic-dialog/collapse.gif);
+  background-image:url(../js/extjs/resources/images/default/basic-dialog/collapse.gif);
 }
 .af-wgt-collapsed .af-wgt-collapse {
-  background-image:url(../extjs/resources/images/default/basic-dialog/expand.gif);
+  background-image:url(../js/extjs/resources/images/default/basic-dialog/expand.gif);
 }
 .af-wgt-collapsed .af-wgt-wgt-body {
   display : none;
@@ -351,9 +330,6 @@ body {
 .af-load-btn .x-btn-text {
   background-image : url(../icons/mashupbuilder/package_add.png)
 }
-.af-discard-btn .x-btn-text {
-  background-image : url(../icons/mashupbuilder/cross.png)
-}
 .af-publish-btn .x-btn-text {
   background-image : url(../icons/mashupbuilder/world_go.png)
 }
@@ -375,3 +351,6 @@ body {
 .af-netvibes-btn .x-menu-item-icon {
   background-image : url(http://www.netvibes.com/favicon.ico)
 }
+
+.timeplot-copyright{display:none;} 
+
