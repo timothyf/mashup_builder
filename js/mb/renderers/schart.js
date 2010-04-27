@@ -18,7 +18,6 @@ var schart = new mb.UnitActionPackage('Renderer.Schart', {
 
 
 schart.register(new mb.RenderingUnitAction({
-
   type : 'Pie',
   label : 'Pie Chart',
   description : '',
@@ -40,7 +39,6 @@ schart.register(new mb.RenderingUnitAction({
 
 
   render : function(params, el) {
-
     var records = params['records'];
     if (!records) return;
     var labelField = params['labelField'];
@@ -71,14 +69,11 @@ schart.register(new mb.RenderingUnitAction({
         };
       }));
     })();
-    
   }
-
 }))
 
 
 mb.packages.register(schart, 'schart.js');
-
 
 })()
 

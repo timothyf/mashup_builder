@@ -30,82 +30,82 @@ body {
 
 .af-library .x-tree-node-collapsed .af-library-pack,
 .af-library .x-tree-node-expanded .af-library-pack {
-  background-image : url(../icons/mashupbuilder/package.png)
+  background-image : url(../images/mashupbuilder/package.png)
 }
 
 .af-library .x-tree-node-leaf .af-library-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .af-library-uaction {
-  background-image : url(../icons/mashupbuilder/cog.png)
+  background-image : url(../images/mashupbuilder/cog.png)
 }
 
 .af-library .x-tree-node-leaf .anchor-render-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .anchor-render-uaction {
-  background-image : url(../icons/mashupbuilder/anchor.png)
+  background-image : url(../images/mashupbuilder/anchor.png)
 }
 
 .af-library .x-tree-node-leaf .image-render-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .image-render-uaction {
-  background-image : url(../icons/mashupbuilder/image.png)
+  background-image : url(../images/mashupbuilder/image.png)
 }
 
 .af-library .x-tree-node-leaf .html-render-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .html-render-uaction {
-  background-image : url(../icons/mashupbuilder/html.png)
+  background-image : url(../images/mashupbuilder/html.png)
 }
 
 .af-library .x-tree-node-leaf .list-render-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .list-render-uaction {
-  background-image : url(../icons/mashupbuilder/text_list_bullets.png)
+  background-image : url(../images/mashupbuilder/text_list_bullets.png)
 }
 
 .af-library .x-tree-node-leaf .table-render-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .table-render-uaction {
-  background-image : url(../icons/mashupbuilder/table.png)
+  background-image : url(../images/mashupbuilder/table.png)
 }
 
 .af-library .x-tree-node-leaf .tile-render-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .tile-render-uaction {
-  background-image : url(../icons/mashupbuilder/application_tile_horizontal.png)
+  background-image : url(../images/mashupbuilder/application_tile_horizontal.png)
 }
 
 .af-library .x-tree-node-leaf .text-render-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .text-render-uaction {
-  background-image : url(../icons/mashupbuilder/text_allcaps.png)
+  background-image : url(../images/mashupbuilder/text_allcaps.png)
 }
 
 .af-library .x-tree-node-leaf .title-render-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .title-render-uaction {
-  background-image : url(../icons/mashupbuilder/text_heading_1.png)
+  background-image : url(../images/mashupbuilder/text_heading_1.png)
 }
 
 .af-library .x-tree-node-leaf .div-render-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .div-render-uaction {
-  background-image : url(../icons/mashupbuilder/shape_move_forwards.png)
+  background-image : url(../images/mashupbuilder/shape_move_forwards.png)
 }
 
 .af-library .x-tree-node-leaf .chart-pie-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .chart-pie-uaction {
-  background-image : url(../icons/mashupbuilder/chart_pie.png)
+  background-image : url(../images/mashupbuilder/chart_pie.png)
 }
 
 .af-library .x-tree-node-leaf .chart-bar-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .chart-bar-uaction {
-  background-image : url(../icons/mashupbuilder/chart_bar.png)
+  background-image : url(../images/mashupbuilder/chart_bar.png)
 }
 
 .af-library .x-tree-node-leaf .gmaps-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .gmaps-uaction {
-  background-image : url(../icons/mashupbuilder/map.png)
+  background-image : url(../images/mashupbuilder/map.png)
 }
 
 .af-library .x-tree-node-leaf .timeline-render-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .timeline-render-uaction {
-  background-image : url(../icons/mashupbuilder/shape_align_left.png)
+  background-image : url(../images/mashupbuilder/shape_align_left.png)
 }
 
 .af-library .x-tree-node-leaf .image-widget-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .image-widget-uaction {
-  background-image : url(../icons/mashupbuilder/photos.png)
+  background-image : url(../images/mashupbuilder/photos.png)
 }
 
 .af-library .x-tree-node-leaf .flickr-widget-uaction,
@@ -115,7 +115,7 @@ body {
 
 .af-library .x-tree-node-leaf .tag-cloud-render-uaction,
 .x-dd-drag-ghost .x-tree-node-leaf .tag-cloud-render-uaction {
-  background-image : url(../icons/mashupbuilder/tag_blue.png)
+  background-image : url(../images/mashupbuilder/tag_blue.png)
 }
 
 .af-library .x-tree-node-leaf .netvibes-widget-render-uaction,
@@ -180,7 +180,7 @@ body {
   float:left;
   width:20px;
   height:16px;
-  background : transparent url(../icons/mashupbuilder/cross.png) no-repeat;
+  background : transparent url(../images/mashupbuilder/cross.png) no-repeat;
 }
 .af-actionfield .af-actionfield-delete {
   visibility : hidden;
@@ -310,40 +310,40 @@ body {
 }
 
 .af-refresh-btn .x-btn-text {
-  background-image : url(../icons/mashupbuilder/arrow_refresh.png)
+  background-image : url(../images/mashupbuilder/arrow_refresh.png)
 }
 .af-add-btn .x-btn-text {
-  background-image : url(../icons/mashupbuilder/add.png)
+  background-image : url(../images/mashupbuilder/add.png)
 }
 .af-open-inner-proc-btn .x-btn-text {
-  background-image : url(../icons/mashupbuilder/application_cascade.png)
+  background-image : url(../images/mashupbuilder/application_cascade.png)
 }
 .af-new-btn .x-btn-text {
-  background-image : url(../icons/mashupbuilder/page.png)
+  background-image : url(../images/mashupbuilder/page.png)
 }
 .af-open-btn .x-btn-text {
-  background-image : url(../icons/mashupbuilder/folder.png)
+  background-image : url(../images/mashupbuilder/folder.png)
 }
 .af-save-btn .x-btn-text {
-  background-image : url(../icons/mashupbuilder/disk.png)
+  background-image : url(../images/mashupbuilder/disk.png)
 }
 .af-load-btn .x-btn-text {
-  background-image : url(../icons/mashupbuilder/package_add.png)
+  background-image : url(../images/mashupbuilder/package_add.png)
 }
 .af-publish-btn .x-btn-text {
-  background-image : url(../icons/mashupbuilder/world_go.png)
+  background-image : url(../images/mashupbuilder/world_go.png)
 }
 .af-run-btn .x-btn-text {
-  background-image : url(../icons/mashupbuilder/script_go.png)
+  background-image : url(../images/mashupbuilder/script_go.png)
 }
 .af-html-btn .x-menu-item-icon {
-  background-image : url(../icons/mashupbuilder/html.png)
+  background-image : url(../images/mashupbuilder/html.png)
 }
 .af-js-btn .x-menu-item-icon {
-  background-image : url(../icons/mashupbuilder/script_code_red.png)
+  background-image : url(../images/mashupbuilder/script_code_red.png)
 }
 .af-gadget-btn .x-menu-item-icon {
-  background-image : url(../icons/mashupbuilder/image.png)
+  background-image : url(../images/mashupbuilder/image.png)
 }
 .af-google-btn .x-menu-item-icon {
   background-image : url(http://www.google.com/favicon.ico)

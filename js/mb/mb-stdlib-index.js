@@ -29,7 +29,6 @@ p.loadScript(u+'/operators/basic-operators.js');
 p.loadScript(u+'/operators/array-operators.js');
 p.loadScript(u+'/operators/string-operators.js');
 p.loadScript(u+'/operators/ajax-operators.js');
-p.loadScript(u+'/operators/mb-scrape.js');
 p.loadScript(u+'/operators/date-operators.js'); 
 p.loadScript(u+'/operators/atompub-operators.js');
 

@@ -11,142 +11,6 @@ var widgets = new mb.UnitActionPackage('Renderer.Widgets', {
 
 mb.packages.loadScript(mb.baseURL + '/js/swfobject.js');
 
-widgets.register(new mb.RenderingUnitAction({
-
-  type : 'FlickrWidget',
-  label : 'Flickr Widget',
-  description : 'Display photos in a sphere',
-  iconCls : 'flickr-widget-uaction',
-  inputs : [
-    { name : 'feedURL',
-      label : 'Tag',
-      type : 'String' },
-    { name : 'width',
-      label : 'Width',
-      type : 'Integer' },
-    { name : 'height',
-      label : 'Height',
-      type : 'Integer' },
-    { name : 'color',
-      label : 'Color',
-      type : 'String' },
-    { name : 'backgroundTrans',
-      label : 'Background Transparency',
-      type : 'String',
-      formElement : "CHECK_BOX" }
-  ],
-
-  render : function(params, el) {
-    var backgroundColor  = params['color'] || '#FFFFFF';
-    var width  = params['width']  || 300;
-    var height = params['height'] || 300;
-    var feedURL = params['feedURL'] || '';
-
-    var backgroundTrans = false;
-    backgroundTrans = params['backgroundTrans'] || false;
-    if(backgroundTrans == 'true')
-      backgroundTrans = true;
-
-    var flashvar = {
-        feed: 'http://api.flickr.com/services/feeds/photos_public.gne?tags='+feedURL
-    }
-
-    var parameters = {
-        movie             : 'http://media.roytanck.com/flickrwidget.swf',
-        bgcolor           : backgroundColor,
-        AllowScriptAccess : 'always'
-    }
-
-    if (backgroundTrans)
-        parameters.wmode = "transparent";
-
-    var div = mb.dom.createElement({tagName: 'div', id : generateId()});
-    el.appendChild(div);
-    swfobject.embedSWF('http://media.roytanck.com/flickrwidget.swf',
-                       div.id,
-                       width, height, "9.0.0",
-                       'http://media.roytanck.com/flickrwidget.swf', flashvar, parameters, {});
-  }
-
-}))
-
-widgets.register(new mb.RenderingUnitAction({
-
-  type : 'ImagesWidget',
-  label : 'Images Widget',
-  description : 'Display photos in a sphere',
-  iconCls : 'image-widget-uaction',
-  inputs : [
-    { name : 'records',
-      label : 'Input Records',
-      type : 'Object[]' },
-    { name : 'photoURLField',
-      label : 'Photo URL Field',
-      type : 'String',
-      options : [] },
-    { name : 'photoLinkField',
-      label : 'Photo Link Field',
-      type : 'String',
-      options : [] },
-    { name : 'width',
-      label : 'Width',
-      type : 'Integer' },
-    { name : 'height',
-      label : 'Height',
-      type : 'Integer' },
-    { name : 'color',
-      label : 'Color',
-      type : 'String' },
-    { name : 'backgroundTrans',
-      label : 'Background Transparency',
-      type : 'String',
-      formElement : "CHECK_BOX" }
-  ],
-
-  render : function(params, el) {
-    var backgroundColor  = params['color'] || '#FFFFFF';
-    var width  = params['width']  || 300;
-    var height = params['height'] || 300;
-
-    var backgroundTrans = false;
-    backgroundTrans = params['backgroundTrans'] || false;
-    if(backgroundTrans == 'true')
-      backgroundTrans = true;
-    
-    var records      = params['records'];
-    var photoURLField   = params['photoURLField']  || '';
-    var photoLinkField  = params['photoLinkField'] || '';
-
-    var xml = "<images>";
-    mb.lang.forEach(records, function(r, i) {
-      var photoLink = mb.lang.cast('String', r[photoLinkField] || r);
-      var photoURL  = mb.lang.cast('String', r[photoURLField]  || r);
-      xml += "<image href='"+photoLink+"'>"+photoURL+"</image>";
-    });
-    xml += "</images>";
-
-    var flashvar = {
-        feed: mb.baseURL+'/Echo?echo='+xml
-    }
-
-    var parameters = {
-        movie             : mb.baseURL+'/swf/photowidget.swf',
-        bgcolor           : backgroundColor,
-        AllowScriptAccess : 'always'
-    }
-
-    if (backgroundTrans)
-        parameters.wmode = "transparent";
-
-    var div = mb.dom.createElement({tagName: 'div', id : generateId()});
-    el.appendChild(div);
-    swfobject.embedSWF(mb.baseURL+'/swf/photowidget.swf',
-                       div.id,
-                       width, height, "9.0.0",
-                       mb.baseURL+'/swf/photowidget.swf', flashvar, parameters, {});
-  }
-
-}))
 
 widgets.register(new mb.RenderingUnitAction({
 
@@ -318,28 +182,22 @@ widgets.register(new mb.RenderingUnitAction({
 
   render : function(params, el) {
     var gadgetURL = params['gadgetURL'];
-
     var gadgetAsJSURL = "http://gmodules.com/ig/ifr?url=" + encodeURI(gadgetURL) + "&synd=open&w=auto&title=&border=none&output=js";
-   var loadGadgetScriptNode = mb.dom.createElement({tagName: 'script', type : "text/javascript", src : gadgetAsJSURL});
-   el.appendChild(loadGadgetScriptNode);
-
+  	var loadGadgetScriptNode = mb.dom.createElement({tagName: 'script', type : "text/javascript", src : gadgetAsJSURL});
+   	el.appendChild(loadGadgetScriptNode);
 //     var widgetIFrameNode = mb.dom.createElement({tagName : 'iframe', frameborder : '0', src: gadgetAsJSURL});
-
 	el.appendChild(widgetIFrameNode); 
   }
-
 }))
 
-function generateId()
-{
+function generateId() {
   return 'flashDiv'+getRandomInt(0,5000)+'a'
                    +getRandomInt(0,5000)+'b'
                    +getRandomInt(0,5000)+'c'
                    +getRandomInt(0,5000);
 }
 
-function getRandomInt(min, max)
-{
+function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
