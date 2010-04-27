@@ -1,1 +1,0 @@
-For more information go to <http://www.solutoire.com/plotr>.
